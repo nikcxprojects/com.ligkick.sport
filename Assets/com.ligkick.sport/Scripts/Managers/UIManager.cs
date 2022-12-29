@@ -30,6 +30,15 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         OpenWindow(0);
+
+        Ball.OnCollided += () =>
+        {
+            scoreText.text = $"{++score}/{LevelManager.currentKicks}";
+            if(score >= LevelManager.currentKicks)
+            {
+                ShowResult(true);
+            }
+        };
     }
 
     public void OpenMenu()

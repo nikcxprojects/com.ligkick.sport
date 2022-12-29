@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7788856791955444926}
   m_Layer: 0
   m_Name: lfoot
-  m_TagString: Untagged
+  m_TagString: foot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 7788856792858489899}
   m_Layer: 0
   m_Name: rfoot
-  m_TagString: Untagged
+  m_TagString: foot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

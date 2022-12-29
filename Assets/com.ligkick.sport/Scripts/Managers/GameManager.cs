@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
+    public static bool GameStarted { get; set; }
+
     private GameObject PlayerRef { get; set; }
     private GameObject GroundRef { get; set; }
     private GameObject BallRef { get; set; }
@@ -45,11 +47,15 @@ public class GameManager : MonoBehaviour
         PlayerRef = Instantiate(PlayerPrefab, EnvironmentRef);
         GroundRef = Instantiate(GroundPrefab, EnvironmentRef);
         BallRef = Instantiate(BallPrefab, EnvironmentRef);
+
+        GameStarted = true;
     }
 
     public void EndGame()
     {
         DestroyOld();
         uiManager.OpenWindow(5);
+
+        GameStarted = false;
     }
 }

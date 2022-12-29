@@ -18,11 +18,21 @@ public class Foot : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if(!GameManager.GameStarted)
+        {
+            return;
+        }
+
         TargetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void OnMouseUp()
     {
+        if (!GameManager.GameStarted)
+        {
+            return;
+        }
+
         TargetPosition = InitPosition;
     }
 
