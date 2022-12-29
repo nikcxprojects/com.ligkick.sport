@@ -60,5 +60,9 @@ public class UIManager : MonoBehaviour
 
         _last.SetActive(true);
         Time.timeScale = windowIndex == 4 ? 0 : 1;
+        if(windowIndex == 1)
+        {
+            FindObjectOfType<RewardManager>().Check();
+        }
     }
 }
