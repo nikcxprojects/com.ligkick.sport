@@ -25,6 +25,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject lose;
     [SerializeField] GameObject win;
 
+    [Space(10)]
+    [SerializeField] LevelManager levelManager;
+
     public static Action<bool> OnGameEnd { get; set; }
 
     private void Awake()
@@ -33,6 +36,11 @@ public class UIManager : MonoBehaviour
 
         Ball.OnCollided += () =>
         {
+            if (!GameManager.GameStarted)
+            {
+                return;
+            }
+
             scoreText.text = $"{++score}/{LevelManager.currentKicks}";
             if(score >= LevelManager.currentKicks)
             {
@@ -54,7 +62,7 @@ public class UIManager : MonoBehaviour
         score = 0;
 
         scoreText.text = $"{score}/{LevelManager.currentKicks}";
-        levelText.text = $"Level {LevelManager.levelIndex}";
+        levelText.text = $"Level {LevelManager.levelIndex + 1}";
 
         GameManager.Instance.StartGame();
         OpenWindow(2);
@@ -101,5 +109,13 @@ public class UIManager : MonoBehaviour
         {
             lose.SetActive(true);
         }
+
+        GameManager.GameStarted = false;
+    }
+
+    public void StartNextLevel()
+    {
+        levelManager.NextLevel();
+        StartGameOnClick();
     }
 }

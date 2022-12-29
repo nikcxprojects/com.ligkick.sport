@@ -25,6 +25,21 @@ public class LevelManager : MonoBehaviour
             levels[i].color = levels[i].transform.GetSiblingIndex() == _levelIndex ? active : Color.white;
         }
 
-        levelIndex = _levelIndex + 1;
+        levelIndex = _levelIndex;
+    }
+
+    public void NextLevel()
+    {
+        levelIndex++;
+        if(levelIndex > levels.Length)
+        {
+            levelIndex = levels.Length - 1;
+        }
+
+        currentKicks = kicks[levelIndex];
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].color = levels[i].transform.GetSiblingIndex() == levelIndex ? active : Color.white;
+        }
     }
 }
