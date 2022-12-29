@@ -21,6 +21,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text levelText;
 
+    [Space(10)]
+    [SerializeField] GameObject lose;
+    [SerializeField] GameObject win;
+
     public static Action<bool> OnGameEnd { get; set; }
 
     private void Awake()
@@ -73,5 +77,20 @@ public class UIManager : MonoBehaviour
     public void ShowOptions(bool IsOpen)
     {
         settings.SetActive(IsOpen);
+    }
+
+    public void ShowResult(bool IsWin)
+    {
+        win.SetActive(false);
+        lose.SetActive(false);
+
+        if(IsWin)
+        {
+            win.SetActive(true);
+        }
+        else
+        {
+            lose.SetActive(true);
+        }
     }
 }
