@@ -17,39 +17,12 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] Text scoreText;
-    [SerializeField] Text timerText;
-
-    [Space(10)]
-    public Transform topBorder;
-    public Transform bottomBorder;
 
     public static Action<bool> OnGameEnd { get; set; }
 
     private void Awake()
     {
         OpenWindow(0);
-    }
-
-    private void Start()
-    {
-        Block.OnCollisionEnter += () =>
-        {
-            scoreText.text = $"{++score}";
-        };
-    }
-
-    public static void CheckResult(bool IsWin)
-    {
-        Instantiate(Resources.Load<Popup>("popup"), GameObject.Find("main canvas").transform);
-        OnGameEnd?.Invoke(IsWin);
-    }
-
-    private void Update()
-    {
-        int min = Mathf.FloorToInt(GameManager.Instance.ElapsedSeconds / 60);
-        int sec = Mathf.FloorToInt(GameManager.Instance.ElapsedSeconds % 60);
-
-        timerText.text = string.Format("{0:00}:{1:00}", min, sec);
     }
 
     public void OpenMenu()
