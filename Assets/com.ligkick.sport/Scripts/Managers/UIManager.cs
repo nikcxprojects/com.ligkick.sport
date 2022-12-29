@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] Text scoreText;
+    [SerializeField] Text levelText;
 
     public static Action<bool> OnGameEnd { get; set; }
 
@@ -29,7 +30,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        OpenWindow(0);
+        OpenWindow(1);
         game.SetActive(false);
 
         GameManager.Instance.DestroyOld();
@@ -39,10 +40,11 @@ public class UIManager : MonoBehaviour
     {
         score = 0;
 
-        scoreText.text = $"{score}";
-        GameManager.Instance.StartGame();
+        scoreText.text = $"{score}/{LevelManager.currentKicks}";
+        levelText.text = $"Level {LevelManager.levelIndex}";
 
-        OpenWindow(3);
+        GameManager.Instance.StartGame();
+        OpenWindow(2);
     }
 
     public void OpenWindow(int windowIndex)

@@ -4,13 +4,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
-    private bool GameStarted { get; set; }
+    private GameObject PlayerRef { get; set; }
+    private GameObject GroundRef { get; set; }
+    private GameObject BallRef { get; set; }
 
 
-    //private Player PlayerPrefab { get; set; }
-    //private Goal GoalPrefab { get; set; }
-    //private Level LevelPrefab { get; set; }
-    //private Ball BallPrefab { get; set; }
+    private GameObject PlayerPrefab { get; set; }
+    private GameObject GroundPrefab { get; set; }
+    private GameObject BallPrefab { get; set; }
 
     private Transform EnvironmentRef { get; set; }
 
@@ -21,45 +22,18 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //PlayerPrefab = Resources.Load<Player>("player");
-        //GoalPrefab = Resources.Load<Goal>("goal");
-        //LevelPrefab = Resources.Load<Level>("level");
-        //BallPrefab = Resources.Load<Ball>("ball");
+        PlayerPrefab = Resources.Load<GameObject>("player");
+        GroundPrefab = Resources.Load<GameObject>("ground");
+        BallPrefab = Resources.Load<GameObject>("ball");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
 
-    private void Update()
-    {
-        if(Time.timeScale <= 0 || !GameStarted)
-        {
-            return;
-        }
-
-        ElapsedSeconds -= Time.deltaTime;
-    }
-
     public void DestroyOld()
     {
-        //if (FindObjectOfType<Player>())
-        //{
-        //    Destroy(FindObjectOfType<Player>().gameObject);
-        //}
-
-        //if (FindObjectOfType<Goal>())
-        //{
-        //    Destroy(FindObjectOfType<Goal>().gameObject);
-        //}
-
-        //if (FindObjectOfType<Level>())
-        //{
-        //    Destroy(FindObjectOfType<Level>().gameObject);
-        //}
-
-        //if (FindObjectOfType<Ball>())
-        //{
-        //    Destroy(FindObjectOfType<Ball>().gameObject);
-        //}
+        Destroy(PlayerRef);
+        Destroy(GroundRef);
+        Destroy(BallRef);
     }
 
     public void StartGame()
@@ -68,19 +42,14 @@ public class GameManager : MonoBehaviour
 
         DestroyOld();
 
-        //Instantiate(PlayerPrefab, EnvironmentRef);
-        //Instantiate(GoalPrefab, EnvironmentRef);
-        //Instantiate(LevelPrefab, EnvironmentRef);
-
-        GameStarted = true;
+        PlayerRef = Instantiate(PlayerPrefab, EnvironmentRef);
+        GroundRef = Instantiate(GroundPrefab, EnvironmentRef);
+        BallRef = Instantiate(BallPrefab, EnvironmentRef);
     }
 
     public void EndGame()
     {
-        GameStarted = false;
-
         DestroyOld();
-
         uiManager.OpenWindow(5);
     }
 }

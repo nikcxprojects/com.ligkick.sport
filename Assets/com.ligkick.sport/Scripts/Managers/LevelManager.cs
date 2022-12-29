@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static int currentKicks;
+    public static int levelIndex;
+
     [SerializeField] Color active;
 
     [Space(10)]
@@ -15,12 +17,14 @@ public class LevelManager : MonoBehaviour
         SetLevel(0);
     }
 
-    public void SetLevel(int levelIndex)
+    public void SetLevel(int _levelIndex)
     {
         currentKicks = kicks[levelIndex];
         for(int i = 0; i < levels.Length; i++)
         {
             levels[i].color = levels[i].transform.GetSiblingIndex() == levelIndex ? active : Color.white;
         }
+
+        levelIndex = _levelIndex + 1;
     }
 }
