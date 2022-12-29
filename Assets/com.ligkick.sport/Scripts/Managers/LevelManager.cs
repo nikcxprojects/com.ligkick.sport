@@ -19,10 +19,10 @@ public class LevelManager : MonoBehaviour
 
     public void SetLevel(int _levelIndex)
     {
-        currentKicks = kicks[levelIndex];
+        currentKicks = kicks[_levelIndex];
         for(int i = 0; i < levels.Length; i++)
         {
-            levels[i].color = levels[i].transform.GetSiblingIndex() == levelIndex ? active : Color.white;
+            levels[i].color = levels[i].transform.GetSiblingIndex() == _levelIndex ? active : Color.white;
         }
 
         levelIndex = _levelIndex + 1;
