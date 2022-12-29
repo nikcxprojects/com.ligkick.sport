@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject getStarted;
     [SerializeField] GameObject menu;
-    [SerializeField] GameObject top;
     [SerializeField] GameObject game;
     [SerializeField] GameObject result;
 
@@ -53,9 +52,8 @@ public class UIManager : MonoBehaviour
         {
             case 0: _last = getStarted; break;
             case 1: _last = menu; break;
-            case 2: _last = top; break;
-            case 3: _last = game; break;
-            case 4: _last = result; break;
+            case 2: _last = game; break;
+            case 3: _last = result; break;
         }
 
         _last.SetActive(true);
