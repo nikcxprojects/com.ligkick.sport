@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeField] GameObject game;
     [SerializeField] GameObject result;
+    [SerializeField] GameObject levels;
+
+    [Space(10)]
+    [SerializeField] GameObject settings;
 
     [Space(10)]
     [SerializeField] Text scoreText;
@@ -53,14 +57,19 @@ public class UIManager : MonoBehaviour
             case 0: _last = getStarted; break;
             case 1: _last = menu; break;
             case 2: _last = game; break;
-            case 3: _last = result; break;
+            case 3: _last = levels; break;
+            case 4: _last = result; break;
         }
 
         _last.SetActive(true);
-        Time.timeScale = windowIndex == 4 ? 0 : 1;
         if(windowIndex == 1)
         {
             FindObjectOfType<RewardManager>().Check();
         }
+    }
+
+    public void ShowOptions(bool IsOpen)
+    {
+        settings.SetActive(IsOpen);
     }
 }

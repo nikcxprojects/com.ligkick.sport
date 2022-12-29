@@ -23,26 +23,20 @@ public class SettingsManager : MonoBehaviour
         soundBtn.onClick.AddListener(() =>
         {
             loop.mute = !loop.mute;
-
-            string status = loop.mute ? "OFF" : "ON";
-            soundBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
+            soundBtn.transform.GetChild(0).gameObject.SetActive(!loop.mute);
         });
 
 
         sfxBtn.onClick.AddListener(() =>
         {
             sfx.mute = !sfx.mute;
-
-            string status = sfx.mute ? "OFF" : "ON";
-            sfxBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
+            sfxBtn.transform.GetChild(0).gameObject.SetActive(!sfx.mute);
         });
 
         vibroBtn.onClick.AddListener(() =>
         {
             VibraEnable = !VibraEnable;
-
-            string status = VibraEnable ? "ON" : "OFF";
-            vibroBtn.transform.GetChild(0).GetComponent<Text>().text = $"{status}";
+            vibroBtn.transform.GetChild(0).gameObject.SetActive(VibraEnable);
         });
 
         soundBtn.onClick.Invoke();
