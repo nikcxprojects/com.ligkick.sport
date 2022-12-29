@@ -7,6 +7,11 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(SettingsManager.VibraEnable)
+        {
+            Handheld.Vibrate();
+        }
+
         if(!collision.collider.CompareTag("foot") || !GameManager.GameStarted)
         {
             return;

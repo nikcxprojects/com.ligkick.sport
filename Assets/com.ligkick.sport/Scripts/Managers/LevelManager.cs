@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
     public void NextLevel()
     {
         levelIndex++;
-        if(levelIndex > levels.Length)
+        if(levelIndex > levels.Length - 1)
         {
             levelIndex = levels.Length - 1;
         }
