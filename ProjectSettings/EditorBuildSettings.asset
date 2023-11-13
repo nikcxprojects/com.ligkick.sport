@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/788 El Royale/Scenes/game.unity
+    path: Assets/Third/Scenes/demo.unity
+    guid: 510caf5cc6292e94ab0f7e2dcc3b20aa
+  - enabled: 1
+    path: Assets/com.ligkick.sport/Scenes/game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
